@@ -43,7 +43,7 @@ class View404(context: Context, layout: Int) {
     init {
 
         // 'apply' refer to the context object as a lambda receiver by keyword 'this',
-        //  also return self.
+        //  it returns context object.
         view404 = layoutInflater.inflate(layout, null).apply {
             layoutParams = RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.MATCH_PARENT,
@@ -57,7 +57,7 @@ class View404(context: Context, layout: Int) {
             this.parentView = parentView
 
             // 'run' refer to the context object as a lambda receiver by keyword 'this',
-            //  but return last context.
+            //  it returns the lambda result.
             this.parentView.run {
                 addView(view404, 0)
                 bringToFront()
