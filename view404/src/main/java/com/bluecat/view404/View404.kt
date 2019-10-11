@@ -14,15 +14,6 @@
  * limitations under the License.
  */
 
-package com.bluecat.View404
+package com.bluecat.view404
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+class View404
