@@ -19,7 +19,7 @@ package com.bluecat.view404
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.RelativeLayout
+import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 
 class View404(context: Context, layout: Int) {
@@ -29,7 +29,7 @@ class View404(context: Context, layout: Int) {
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     // initialized in show method.
-    private lateinit var parentView: RelativeLayout
+    private var parentView: ViewGroup? = null
 
     // public getter, private setter
     var view404: View
@@ -45,20 +45,21 @@ class View404(context: Context, layout: Int) {
         // 'apply' refer to the context object as a lambda receiver by keyword 'this',
         //  it returns context object.
         view404 = layoutInflater.inflate(layout, null).apply {
-            layoutParams = RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.MATCH_PARENT
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
             )
         }
     }
 
-    fun show(parentView: RelativeLayout?) {
+    /** shows the view404 on the parent view. */
+    fun show(parentView: ViewGroup?) {
         if (!isShowing && parentView != null) {
             this.parentView = parentView
 
             // 'run' refer to the context object as a lambda receiver by keyword 'this',
             //  it returns the lambda result.
-            this.parentView.run {
+            this.parentView?.run {
                 addView(view404, 0)
                 bringToFront()
                 requestLayout()
@@ -69,9 +70,10 @@ class View404(context: Context, layout: Int) {
         }
     }
 
+    /** dismiss the view404 on the parent view. */
     fun dismiss() {
         if (isShowing) {
-            parentView.removeView(view404)
+            parentView?.removeView(view404)
         }
     }
 }

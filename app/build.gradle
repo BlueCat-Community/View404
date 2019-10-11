@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.sdk_version
     defaultConfig {
-        applicationId "com.bluecat.View404"
+        applicationId "com.bluecat.view404Demo"
         minSdkVersion rootProject.min_sdk_Version
         targetSdkVersion rootProject.sdk_version
         versionCode rootProject.version_code
@@ -16,6 +16,7 @@ android {
 dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation project(":view404")
 }
 
 apply from: '../spotless.gradle'
