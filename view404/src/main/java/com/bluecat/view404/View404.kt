@@ -24,26 +24,26 @@ import androidx.core.view.ViewCompat
 
 class View404(context: Context, layout: Int) {
 
-    // NoneNull type
+    /** NoneNull type */
     private var layoutInflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-    // initialized in show method.
+    /** initialized in show method. */
     private var parentView: ViewGroup? = null
 
-    // public getter, private setter
+    /** public getter, private setter */
     var view404: View
         private set
 
-    // public getter, private setter
+    /** public getter, private setter */
     var isShowing = false
         private set
 
-    // initialization
+    /** initialization */
     init {
 
-        // 'apply' refer to the context object as a lambda receiver by keyword 'this',
-        //  it returns context object.
+        /** 'apply' refer to the context object as a lambda receiver by keyword 'this',
+        it returns context object. */
         view404 = layoutInflater.inflate(layout, null).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -57,8 +57,8 @@ class View404(context: Context, layout: Int) {
         if (!isShowing && parentView != null) {
             this.parentView = parentView
 
-            // 'run' refer to the context object as a lambda receiver by keyword 'this',
-            //  it returns the lambda result.
+            /** 'run' refer to the context object as a lambda receiver by keyword 'this',
+            it returns the lambda result. */
             this.parentView?.run {
                 addView(view404, 0)
                 bringToFront()

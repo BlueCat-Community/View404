@@ -26,16 +26,23 @@ import kotlinx.android.synthetic.main.layout_404.view.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var view404: View404? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val view404 = View404(this, R.layout.layout_404)
-        parentLayout.show404(view404)
+        button2.setOnClickListener {
+            view404 = View404(this, R.layout.layout_404)
+            Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
-        view404.view404.button.setOnClickListener {
-            view404.dismiss()
-            Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
+            view404?.view404?.button?.setOnClickListener {
+                view404?.dismiss()
+                Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
+            }
+
+            parentLayout.show404(view404!!)
         }
     }
 }
