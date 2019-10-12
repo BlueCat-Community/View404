@@ -74,6 +74,7 @@ class View404(context: Context, layout: Int) {
     fun dismiss() {
         if (isShowing) {
             parentView?.removeView(view404)
+            isShowing = false
         }
     }
 }
