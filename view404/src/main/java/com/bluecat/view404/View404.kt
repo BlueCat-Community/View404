@@ -41,7 +41,6 @@ class View404(context: Context, layout: Int) {
 
     /** initialization */
     init {
-
         /** 'apply' refer to the context object as a lambda receiver by keyword 'this',
         it returns context object. */
         view404 = layoutInflater.inflate(layout, null).apply {
@@ -74,6 +73,7 @@ class View404(context: Context, layout: Int) {
     fun dismiss() {
         if (isShowing) {
             parentView?.removeView(view404)
+            isShowing = false
         }
     }
 }
