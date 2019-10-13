@@ -64,6 +64,7 @@ class View404(context: Context, layout: Int) {
                 requestLayout()
                 invalidate()
             }
+
             ViewCompat.setTranslationZ(view404, 99f)
             isShowing = true
         }
