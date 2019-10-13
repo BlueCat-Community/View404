@@ -33,16 +33,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         button2.setOnClickListener {
             view404 = View404(this, R.layout.layout_404)
             Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
             view404?.view404?.button?.setOnClickListener {
-                view404?.dismiss()
+                //view404?.dismiss()
+                view404?.dismiss(R.anim.abc_fade_out)
                 Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
             }
 
-            parentLayout.show404(view404!!)
+            //parentLayout.show404(view404!!)
+            parentLayout.show404(view404!!, R.anim.abc_fade_in)
         }
     }
 }

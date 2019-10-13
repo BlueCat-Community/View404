@@ -18,6 +18,6 @@ package com.bluecat.view404
 
 import android.view.ViewGroup
 
-fun ViewGroup.show404(view404: View404) {
-    view404.show(this)
+fun ViewGroup.show404(view404: View404, fadeInAnimation:Int = R.anim.not_move_activity) {
+    view404.show(this, fadeInAnimation)
 }
