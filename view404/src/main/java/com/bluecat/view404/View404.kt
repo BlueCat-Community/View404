@@ -20,9 +20,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.core.view.ViewCompat
 
-class View404(context: Context, layout: Int) {
+class View404(private val context: Context, layout: Int) {
 
     /** NoneNull type */
     private var layoutInflater: LayoutInflater =
@@ -51,11 +52,12 @@ class View404(context: Context, layout: Int) {
         }
     }
 
-    /** shows the view404 on the parent view. */
-    fun show(parentView: ViewGroup?) {
+    /** shows the view404 on the parent view.
+        if you want to put another fadeIn animation, you can do that. */
+    fun show(parentView: ViewGroup?, fadeInAnimation:Int = R.anim.not_move_activity) {
         if (!isShowing && parentView != null) {
             this.parentView = parentView
-
+            view404.startAnimation(AnimationUtils.loadAnimation(context, fadeInAnimation))
             /** 'run' refer to the context object as a lambda receiver by keyword 'this',
             it returns the lambda result. */
             this.parentView?.run {
@@ -64,14 +66,17 @@ class View404(context: Context, layout: Int) {
                 requestLayout()
                 invalidate()
             }
+
             ViewCompat.setTranslationZ(view404, 99f)
             isShowing = true
         }
     }
 
-    /** dismiss the view404 on the parent view. */
-    fun dismiss() {
+    /** dismiss the view404 on the parent view.
+        if you want to put another fadeOut animation, you can do that. */
+    fun dismiss(fadeOutAnimation:Int = R.anim.not_move_activity) {
         if (isShowing) {
+            view404.startAnimation(AnimationUtils.loadAnimation(context, fadeOutAnimation))
             parentView?.removeView(view404)
             isShowing = false
         }
