@@ -22,30 +22,39 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bluecat.view404.View404
 import com.bluecat.view404.show404
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.dismissError
+import kotlinx.android.synthetic.main.layout_404.*
 import kotlinx.android.synthetic.main.layout_404.view.*
 
 class MainActivity : AppCompatActivity() {
 
     private var view404: View404? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        showError.setOnClickListener {
+            if (view404 == null) {
+                view404 = View404(this, R.layout.layout_404)
+                Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
-        button2.setOnClickListener {
-            view404 = View404(this, R.layout.layout_404)
-            Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
-
-            view404?.view404?.button?.setOnClickListener {
-                //view404?.dismiss()
-                view404?.dismiss(R.anim.abc_fade_out)
-                Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
+                //parentLayout.show404(view404!!)
+                errorLayout.show404(view404!!, R.anim.abc_fade_in)
+            } else {
+                Toast.makeText(this, "already shown", Toast.LENGTH_SHORT).show()
             }
+        }
 
-            //parentLayout.show404(view404!!)
-            parentLayout.show404(view404!!, R.anim.abc_fade_in)
+        dismissError.setOnClickListener {
+            if (view404 != null) {
+                Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
+
+                view404?.dismiss(R.anim.abc_fade_out)
+                view404 = null
+            } else {
+                Toast.makeText(this, "already dismissed", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

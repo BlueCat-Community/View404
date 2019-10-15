@@ -7,10 +7,28 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <RelativeLayout
+        android:id="@+id/errorLayout"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:layout_above="@+id/showError">
+
+    </RelativeLayout>
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/showError"
+        android:layout_above="@+id/dismissError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Show Error" />
+
+    <Button
+        android:id="@+id/dismissError"
         android:layout_alignParentBottom="true"
-        android:text="show" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dismiss Error" />
+
 </RelativeLayout>
