@@ -71,7 +71,7 @@ Make Variable for View404.
 private var view404: View404? = null
 ```
 
-This is showing Error Screen in Activity.
+If you want showing Error Screen in Activity, Write following Code.
 ```kotlin
 if(view404 == null)
     view404 = View404(this, R.layout.layout_404)
@@ -79,7 +79,7 @@ if(view404 == null)
 }
 ```
 
-If you want dismiss Error Screen, Write following Code.
+If you want dismiss Error Screen in Activity, Write following Code.
 ```kotlin
 if(view404 != null) {
     view404?.dismiss(R.anim.view404_fade_out_default)
