@@ -73,7 +73,7 @@ private var view404: View404? = null
 
 If you want to overlay 'not found' View on your ViewGroup, 
 ```kotlin
-if(view404 == null)
+if(view404 == null) {
     view404 = View404(this, R.layout.layout_404)
     errorLayout.show404(view404!!, R.anim.view404_fade_in_default)
 }
