@@ -50,7 +50,7 @@ Make Layout XML File for Showing Error inside your project's res/layout.
 </RelativeLayout>
 ```
 
-..And Add Error Layout Space in Your Activity's Layout.
+..And Add Error Layout Space in Your Layout.
 ```xml
 <RelativeLayout
     android:id="@+id/errorLayout"
@@ -60,7 +60,7 @@ Make Layout XML File for Showing Error inside your project's res/layout.
     android:layout_margin="50dp" />
 ```
 
-Import following Package inside your Activity Class.
+Import following Package inside your Class.
 ```kotlin
 import com.bluecat.view404.View404
 import com.bluecat.view404.show404
@@ -71,7 +71,7 @@ Make Variable for View404.
 private var view404: View404? = null
 ```
 
-If you want showing Error Screen in Activity, Write following Code.
+If you want to overlay 'not found' View on your ViewGroup, 
 ```kotlin
 if(view404 == null)
     view404 = View404(this, R.layout.layout_404)
@@ -79,7 +79,7 @@ if(view404 == null)
 }
 ```
 
-If you want dismiss Error Screen in Activity, Write following Code.
+If you want to dismiss 'not found' View on your ViewGroup, 
 ```kotlin
 if(view404 != null) {
     view404?.dismiss(R.anim.view404_fade_out_default)
