@@ -23,8 +23,6 @@ import com.bluecat.view404.View404
 import com.bluecat.view404.show404
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.dismissError
-import kotlinx.android.synthetic.main.layout_404.*
-import kotlinx.android.synthetic.main.layout_404.view.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
                 //parentLayout.show404(view404!!)
-                errorLayout.show404(view404!!, R.anim.abc_fade_in)
+                errorLayout.show404(view404!!, R.anim.view404_fade_in_default)
             } else {
                 Toast.makeText(this, "already shown", Toast.LENGTH_SHORT).show()
             }
@@ -50,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             if (view404 != null) {
                 Toast.makeText(this, "dismissed", Toast.LENGTH_SHORT).show()
 
-                view404?.dismiss(R.anim.abc_fade_out)
+                view404?.dismiss(R.anim.view404_fade_out_default)
                 view404 = null
             } else {
                 Toast.makeText(this, "already dismissed", Toast.LENGTH_SHORT).show()
