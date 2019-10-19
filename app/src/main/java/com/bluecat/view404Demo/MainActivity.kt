@@ -17,27 +17,33 @@
 package com.bluecat.view404Demo
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bluecat.view404.View404
 import com.bluecat.view404.show404
+import com.bluecat.view404.View404CustomLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.dismissError
 
 class MainActivity : AppCompatActivity() {
 
     private var view404: View404? = null
+    private var view404CustomLayout: View404CustomLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        view404CustomLayout = View404CustomLayout(this, "Hi", null)
+
+        val simpleView: View = view404CustomLayout!!.make()
+
         showError.setOnClickListener {
             if (view404 == null) {
-                view404 = View404(this, R.layout.layout_404)
+                view404 = View404(this, simpleView)
                 Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
-                //parentLayout.show404(view404!!)
                 errorLayout.show404(view404!!, R.anim.view404_fade_in_default)
             } else {
                 Toast.makeText(this, "already shown", Toast.LENGTH_SHORT).show()
