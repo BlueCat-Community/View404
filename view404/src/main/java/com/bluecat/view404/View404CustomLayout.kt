@@ -1,60 +1,54 @@
-/*
- * Copyright 2019 Team Mulro in BlueCat-Community
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.bluecat.view404
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import kotlinx.android.synthetic.main.view404_customlayout.view.*
 
+class View404CustomLayout private constructor() {
 
-class View404CustomLayout(context: Context, bgColor: Int?, errMsg: String?, errImg: Int?) {
-    private val layoutInflater: LayoutInflater =
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private lateinit var layoutInflater: LayoutInflater
+    private lateinit var customLayout: View
 
-    private var customLayout: View
+    /** option area */
+    var bgColor: Int = R.color.custom_background_default
+    var errMsg: String = ""
+    var errImg: Int? = null
 
-    init {
-        customLayout = layoutInflater.inflate(R.layout.view404_customlayout, null).apply {
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
+    /** Static area */
+    companion object {
+        @SuppressLint("InflateParams")
+        @JvmStatic
+        fun getInstance(context: Context) = View404CustomLayout().apply {
+            layoutInflater =
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            customLayout = layoutInflater.inflate(R.layout.view404_customlayout, null).apply {
+                layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            }
         }
 
-        if (bgColor != null) {
-            customLayout.setBackgroundColor(bgColor)
-        }
-
-        if (errMsg != null) {
-            val customMsg: TextView = customLayout.findViewById(R.id.errorText)
-            customMsg.text = errMsg
-        }
-
-        if (errImg != null) {
-            val customImg: ImageView = customLayout.findViewById(R.id.errorImage)
-            customImg.setImageResource(errImg)
+        @JvmStatic
+        fun getInstance(
+            context: Context,
+            bgColor: Int = R.color.custom_background_default,
+            errMsg: String = "",
+            errImg: Int? = null
+        ) = getInstance(context).apply {
+            this.bgColor = bgColor
+            this.errMsg = errMsg
+            this.errImg = errImg
         }
     }
 
-    fun make(): View {
-        return customLayout
+
+    fun inflate(): View = customLayout.apply {
+        setBackgroundColor(bgColor)
+        errorText.text = errMsg
+        errImg?.let { errorImage.setImageResource(it) }
     }
 }

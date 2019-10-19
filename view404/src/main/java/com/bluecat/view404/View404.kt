@@ -17,18 +17,43 @@
 package com.bluecat.view404
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.annotation.LayoutRes
 import androidx.core.view.ViewCompat
 
-class View404(private val context: Context, layout: Any?) {
+class View404 {
 
+    private val context: Context
     /** NoneNull type */
-    private var layoutInflater: LayoutInflater =
-        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private var layoutInflater: LayoutInflater
+
+    /** initialization(Layout Resource ID)*/
+    constructor(context: Context, @LayoutRes layout: Int) {
+        this.context = context
+        layoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+        /** 'apply' refer to the context object as a lambda receiver by keyword 'this',
+        it returns context object. */
+        view404 = layoutInflater.inflate(layout, null).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        }
+    }
+
+    /** initialization(Custom View) */
+    constructor(context: Context, layout: View) {
+        this.context = context
+        layoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        view404 = layout
+    }
+
 
     /** initialized in show method. */
     private var parentView: ViewGroup? = null
@@ -41,29 +66,9 @@ class View404(private val context: Context, layout: Any?) {
     var isShowing = false
         private set
 
-    /** initialization */
-    init {
-        /** 'apply' refer to the context object as a lambda receiver by keyword 'this',
-        it returns context object. */
-        if(layout is Int) {
-            view404 = layoutInflater.inflate(layout, null).apply {
-                layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-            }
-        }
-        else if(layout is View) {
-            view404 = layout
-        }
-        else {
-            view404 = null
-        }
-    }
-
     /** shows the view404 on the parent view.
-        if you want to put another fadeIn animation, you can do that. */
-    fun show(parentView: ViewGroup?, fadeInAnimation:Int = R.anim.not_move_activity) {
+    if you want to put another fadeIn animation, you can do that. */
+    fun show(parentView: ViewGroup?, fadeInAnimation: Int = R.anim.not_move_activity) {
         if (!isShowing && parentView != null) {
             this.parentView = parentView
             view404!!.startAnimation(AnimationUtils.loadAnimation(context, fadeInAnimation))
@@ -82,8 +87,8 @@ class View404(private val context: Context, layout: Any?) {
     }
 
     /** dismiss the view404 on the parent view.
-        if you want to put another fadeOut animation, you can do that. */
-    fun dismiss(fadeOutAnimation:Int = R.anim.not_move_activity) {
+    if you want to put another fadeOut animation, you can do that. */
+    fun dismiss(fadeOutAnimation: Int = R.anim.not_move_activity) {
         if (isShowing) {
             view404!!.startAnimation(AnimationUtils.loadAnimation(context, fadeOutAnimation))
             parentView?.removeView(view404)
