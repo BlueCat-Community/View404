@@ -16,6 +16,7 @@
 
 package com.bluecat.view404Demo
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        view404CustomLayout = View404CustomLayout(this, "Hi", null)
+        view404CustomLayout = View404CustomLayout(this, Color.parseColor("#ffffff"), "에러가 발생했습니다!", null)
 
         val simpleView: View = view404CustomLayout!!.make()
 

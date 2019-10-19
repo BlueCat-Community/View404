@@ -25,12 +25,11 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-class View404CustomLayout(context: Context, errMsg: String?, errImg: Drawable?) {
+class View404CustomLayout(context: Context, bgColor: Int?, errMsg: String?, errImg: Int?) {
     private val layoutInflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-    var customLayout: View
-        private set
+    private var customLayout: View
 
     init {
         customLayout = layoutInflater.inflate(R.layout.view404_customlayout, null).apply {
@@ -40,6 +39,10 @@ class View404CustomLayout(context: Context, errMsg: String?, errImg: Drawable?) 
             )
         }
 
+        if (bgColor != null) {
+            customLayout.setBackgroundColor(bgColor)
+        }
+
         if (errMsg != null) {
             val customMsg: TextView = customLayout.findViewById(R.id.errorText)
             customMsg.text = errMsg
@@ -47,7 +50,7 @@ class View404CustomLayout(context: Context, errMsg: String?, errImg: Drawable?) 
 
         if (errImg != null) {
             val customImg: ImageView = customLayout.findViewById(R.id.errorImage)
-            customImg.setImageDrawable(errImg)
+            customImg.setImageResource(errImg)
         }
     }
 

@@ -16,15 +16,15 @@
 -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <ImageView
         android:id="@+id/errorImage"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:scaleType="fitXY"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
@@ -36,8 +36,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:gravity="center"
-        android:textSize="30sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:layout_below="@+id/errorImage"
-        tools:text="Error!" />
+        android:text="Error!" />
 </RelativeLayout>
