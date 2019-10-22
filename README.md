@@ -5,7 +5,7 @@
 
 🍀 Easy way to implement 404 screens for android.
 
-<img src="https://user-images.githubusercontent.com/3215313/66920434-3ba87a80-f05e-11e9-81a1-38fa12b211be.gif" width="40%">
+<img src="Readme_src/testgif.gif" width="40%">
 
 
 ## Including in your project
