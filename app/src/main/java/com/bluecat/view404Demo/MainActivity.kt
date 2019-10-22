@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         showError.setOnClickListener {
             if (view404 == null) {
-                view404 = View404(this, view404CustomLayout?.inflate()!!)
+                view404 = View404(this, R.layout.layout_404)
                 Toast.makeText(this, "shown", Toast.LENGTH_SHORT).show()
 
                 errorLayout.show404(view404!!, R.anim.view404_fade_in_default)
