@@ -93,7 +93,17 @@ if(view404 != null) {
 ### Use Simple Custom Layout
 View404 supports Custom Layout Class for More Simple!
 
-First, Write Import following Package inside your Class!
+First, Add Error Layout Space in Your Layout.
+```xml
+<RelativeLayout
+    android:id="@+id/errorLayout"
+    android:background="#000000"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="50dp" />
+```
+
+Write Import following Package inside your Class.
 ```kotlin
 import com.bluecat.view404.View404
 import com.bluecat.view404.show404
