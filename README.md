@@ -26,11 +26,13 @@ allprojects {
 And add a dependency code to your module's `build.gradle` file.
 ```
 dependencies {
-    implementation 'com.github.BlueCat-Community:View404:v1.0.0'
+    implementation 'com.github.BlueCat-Community:View404:v1.1.0'
 }
 ```
 
 ## Usage
+
+### Use Layout XML File
 Make Layout XML File for Showing Error inside your project's res/layout.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -87,6 +89,48 @@ if(view404 != null) {
     view404 = null
 }
 ```
+
+### Use Simple Custom Layout
+View404 supports Custom Layout Class for More Simple!
+
+First, Write Import following Package inside your Class!
+```kotlin
+import com.bluecat.view404.View404
+import com.bluecat.view404.show404
+import com.bluecat.view404.View404CustomLayout
+```
+
+Make Variable for View404 & View404CustomLayout.
+```kotlin
+private var view404: View404? = null
+private var view404CustomLayout: View404CustomLayout? = null
+```
+
+Write getInstance in View404CustomLayout.
+```kotlin
+view404CustomLayout = View404CustomLayout.getInstance(
+            context = applicationContext, // Context
+            bgColor = Color.parseColor("#ffffff"), // Background Color
+            errMsg = "Error!" // Error Message
+        )
+```
+
+If you want to overlay 'not found' View on your ViewGroup, 
+```kotlin
+if(view404 == null) {
+    view404 = View404(this, view404CustomLayout?.inflate()!!)
+    errorLayout.show404(view404!!, R.anim.view404_fade_in_default)
+}
+```
+
+If you want to dismiss 'not found' View on your ViewGroup, 
+```kotlin
+if(view404 != null) {
+    view404?.dismiss(R.anim.view404_fade_out_default)
+    view404 = null
+}
+```
+
 # License
 ```
  Copyright 2019 Team Mulro in BlueCat-Community
