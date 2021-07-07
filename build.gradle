@@ -9,7 +9,7 @@ buildscript {
         appcompat_version = '1.1.0'
 
         gradle_version = '3.5.3'
-        spotless_version = '3.26.0'
+        spotless_version = '5.14.1'
     }
     repositories {
         google()
